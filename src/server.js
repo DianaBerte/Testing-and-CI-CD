@@ -18,7 +18,8 @@ server.use("/products", productsRouter)
 
 // ************************************* ERROR HANDLERS *******************************
 server.use(badRequestHandler)
-server.use(genericErrorHandler)
 server.use(notFoundError)
+server.use(genericErrorHandler)
+
 
 export default server

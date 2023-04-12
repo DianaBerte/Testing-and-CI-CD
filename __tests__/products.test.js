@@ -26,7 +26,7 @@ const notValidProduct = {
 }
 
 const notValidID = {
-  _id: '6436c14001ed545af0855acd'
+  _id: '123456123456123456123456'
 }
 
 beforeAll(async () => {
@@ -65,7 +65,7 @@ describe("Test Products APIs", () => {
   })
 
   it("Should test that GET /products/:id returns 404 if a non-existing _id is provided", async () => {
-    await client.get("/products/:id").send(notValidID).expect(404)
+    await client.get(`/products/${notValidID._id}`).expect(404)
   })
 
 })
