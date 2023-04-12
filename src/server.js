@@ -21,5 +21,4 @@ server.use(badRequestHandler)
 server.use(notFoundError)
 server.use(genericErrorHandler)
 
-
 export default server
