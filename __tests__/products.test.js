@@ -15,14 +15,18 @@ dotenv.config() // This command forces .env vars to be loaded into process.env. 
 const client = supertest(server)
 
 const validProduct = {
-  name: "iPhone",
-  description: "Good phone",
-  price: 10000,
+  name: "Nokia",
+  description: "Nice phone",
+  price: 10,
 }
 
 const notValidProduct = {
   description: "Good phone",
   price: 10000,
+}
+
+const notValidID = {
+  _id: '6436c14001ed545af0855acd'
 }
 
 beforeAll(async () => {
@@ -57,6 +61,11 @@ describe("Test Products APIs", () => {
 
   it("Should test that GET /products returns 200 and a body", async () => {
     const response = await client.get("/products").expect(200)
-    console.log(response.body)
+    console.log("HELLO: ", response.body)
   })
+
+  it("Should test that GET /products/:id returns 404 if a non-existing _id is provided", async () => {
+    await client.get("/products/:id").send(notValidID).expect(404)
+  })
+
 })

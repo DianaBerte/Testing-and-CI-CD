@@ -17,7 +17,7 @@ productsRouter.post("/", async (req, res, next) => {
 productsRouter.get("/", async (req, res, next) => {
   try {
     const resources = await ProductsRouter.find()
-    res.send(resources)
+    res.status(200).send(resources)
   } catch (error) {
     next(error)
   }
@@ -32,6 +32,7 @@ productsRouter.get("/:id", async (req, res, next) => {
       next(createError(404, `Resource with id ${req.params.id} not found!`))
     }
   } catch (error) {
+    console.log("ERROR: ", error)
     next(error)
   }
 })

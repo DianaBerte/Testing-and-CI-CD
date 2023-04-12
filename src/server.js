@@ -1,7 +1,7 @@
 import Express from "express"
 import cors from "cors"
 import productsRouter from "./api/products/index.js"
-import { badRequestHandler, genericErrorHandler } from "./errorHandlers.js"
+import { badRequestHandler, genericErrorHandler, notFoundError } from "./errorHandlers.js"
 
 const server = Express()
 
@@ -19,5 +19,6 @@ server.use("/products", productsRouter)
 // ************************************* ERROR HANDLERS *******************************
 server.use(badRequestHandler)
 server.use(genericErrorHandler)
+server.use(notFoundError)
 
 export default server
